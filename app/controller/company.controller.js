@@ -101,9 +101,13 @@ exports.findOne = (req, res) => {
 			attributes: ['code', 'namabarang', 'hargabarang', 'jumlah']
 		}]
 	}).then(company =>{
+
 		if(!company){
-			res.status(404).json({message:'data not founs'});
+			res.status(404).json({
+				message: "data not found"
+			});
+		}else{
+			res.send(company);
 		}
-		res.send(company);
 	});
 };
